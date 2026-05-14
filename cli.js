@@ -2,6 +2,7 @@
 
 const http = require('node:http');
 const chalk = require('chalk');
+const { version } = require('./package.json');
 
 const DEFAULT_PORT = 51234;
 const args = process.argv.slice(2);
@@ -48,6 +49,10 @@ const colors = {
   title: chalk.green.bold,
 };
 
+function requestSeparator() {
+  return colors.meta('='.repeat(72));
+}
+
 function sendJson(res, statusCode, payload) {
   const body = JSON.stringify(payload, null, 2);
   res.writeHead(statusCode, {
@@ -77,15 +82,18 @@ function logRequest(req, res, path, startedAt, details = {}) {
     const baseLine = `${colors.method(req.method)} ${colors.path(path)} ${colors.meta('->')} ${statusText} ${colors.dim(`(${durationMs}ms)`)}`;
 
     if (logLevel === 1) {
+      console.log(requestSeparator());
       console.log(baseLine);
       return;
     }
 
     if (logLevel === 2) {
+      console.log(requestSeparator());
       console.log(`${baseLine} ${colors.meta('from')} ${colors.meta(`${remoteAddress}:${remotePort}`)} ${colors.meta('ua=')}${chalk.white(JSON.stringify(userAgent))}`);
       return;
     }
 
+    console.log(requestSeparator());
     console.log([
       `${baseLine} ${colors.meta('from')} ${colors.meta(`${remoteAddress}:${remotePort}`)}`,
       `${colors.meta('ua=')}${chalk.white(JSON.stringify(userAgent))}`,
@@ -97,9 +105,10 @@ function logRequest(req, res, path, startedAt, details = {}) {
 
 function helpText(baseUrl) {
   return [
-    colors.title('simple-http-bin'),
+    colors.title(`simple-http-bin v${version}`),
     '',
     `${colors.meta('Running at:')} ${chalk.white(baseUrl)}`,
+    `${colors.meta('Version:')} ${chalk.white(version)}`,
     `Port: ${port} (use --port <n> or PORT=<n>)`,
     'Requests are logged to the console.',
     'Use -v or --verbose for more detail; repeat -v for even more.',
