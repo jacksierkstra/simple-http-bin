@@ -16,6 +16,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {
+    "chalk": "^4.1.2"
+  },
   "bin": {
     "simple-http-bin": "cli.js"
   },

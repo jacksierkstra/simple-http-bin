@@ -2,6 +2,10 @@
 
 A tiny local httpbin-like utility.
 
+Requests are logged to the console.
+Use `-v` or `--verbose` for more detail. Repeat `-v` for extra detail.
+Colored output is enabled when the terminal supports it.
+
 ## Install
 
 ```bash
@@ -25,6 +29,8 @@ npx simple-http-bin
 ```bash
 simple-http-bin --port 8080
 simple-http-bin -p 8080
+simple-http-bin -v
+simple-http-bin -vv
 PORT=8080 simple-http-bin
 HOST=0.0.0.0 simple-http-bin
 ```
