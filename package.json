@@ -1,0 +1,25 @@
+{
+  "name": "simple-http-bin",
+  "version": "0.1.0",
+  "description": "A tiny local httpbin-like utility",
+  "license": "MIT",
+  "keywords": [
+    "httpbin",
+    "http",
+    "cli",
+    "server"
+  ],
+  "files": [
+    "cli.js",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "simple-http-bin": "./cli.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
