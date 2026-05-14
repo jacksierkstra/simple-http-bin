@@ -17,7 +17,7 @@
     "access": "public"
   },
   "bin": {
-    "simple-http-bin": "./cli.js"
+    "simple-http-bin": "cli.js"
   },
   "engines": {
     "node": ">=18"
