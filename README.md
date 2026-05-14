@@ -49,3 +49,12 @@ curl http://127.0.0.1:51234/headers
 curl -X POST http://127.0.0.1:51234/anything -d "hello"
 curl -i http://127.0.0.1:51234/status/418
 ```
+
+## Release
+
+```bash
+make release-patch
+make release-minor
+make release-major
+make publish
+```
